@@ -13,4 +13,20 @@
  */
 function User() {
     // implement here
+    let password;
+    let isSet = false;
+    
+    function setPassword(p){
+        if(!isSet){
+            password = p;
+            isSet=true;
+            return;
+        }
+        throw new Error('Password already set.');
+    }
+
+    function checkPassword(p){
+        return password===p;
+    }
+
 }

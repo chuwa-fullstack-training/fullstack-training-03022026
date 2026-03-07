@@ -1,5 +1,13 @@
 function counter() {
     // implement here
+    let count = 0;
+    return function(num){
+        if(num===undefined){
+            return count;
+        }
+        count+=num;
+        return count;
+    }
 }
 
 let count = counter();
