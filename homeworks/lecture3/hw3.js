@@ -1,5 +1,18 @@
 function counter() {
     // implement here
+    var result = 0;
+
+    function add(number){
+
+        if (number === undefined) {
+            return result;
+        }
+
+        result += number;
+        return result;
+    }
+
+    return add;
 }
 
 let count = counter();
