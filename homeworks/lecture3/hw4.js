@@ -16,7 +16,7 @@ function Triangle(a, b, c) {
 Triangle.prototype = Object.create(Shape.prototype);
 Triangle.prototype.constructor = Triangle;
 
-// your code goes here
+// your code goes here 没有思路
 // 1. implement a method getPerimeter for Triangle class
 // 2. implement a method getArea for Triangle class
 
