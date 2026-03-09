@@ -12,5 +12,5 @@
  * user.password; // undefined
  */
 function User() {
-    // implement here
+    // implement here 这个题完全不会
 }
