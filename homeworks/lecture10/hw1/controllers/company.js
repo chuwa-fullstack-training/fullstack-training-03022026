@@ -55,12 +55,12 @@ const getAllCompanies = async (req, res) => {
 };
 
 // Get all employees of a company
-const getAllEmployeesByCompanyId = async (id) => {
+const getAllEmployeesByCompanyId = async (req,res) => {
   try {
-    const employees = await Company.findById(req.params?.id).populate(
+    const company = await Company.findById(req.params?.id).populate(
       "employees",
     );
-    res.status(200).json(employees);
+    res.status(200).json(company.employees);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ message: "Server Error" });
