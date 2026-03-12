@@ -18,7 +18,7 @@ The Company schema should have the following fields:
 - description: String
 - headquarters: String
 - industry: String
-- _employees: [EmployeeSchema]_
+- *employees: [EmployeeSchema]*
 
 The Employee schema should have the following fields:
 
@@ -29,4 +29,5 @@ The Employee schema should have the following fields:
 - jobTitle: String
 - resigned: Boolean
 - salary: Number
-- _manager: EmployeeSchema_ (optional)
+- *manager: EmployeeSchema* (optional)
+

@@ -10,6 +10,8 @@ new Promise((resolve, reject) => {
   reject('f');
 }).then(result => console.log(result));
 
+// a c e d b
+
 // 2
 const fn = () =>
   new Promise((resolve, reject) => {
@@ -22,3 +24,5 @@ fn().then(res => {
 });
 
 console.log('start');
+
+// 1 start success

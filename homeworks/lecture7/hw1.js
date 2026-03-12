@@ -14,3 +14,30 @@
  */
 
 // your code here
+const fs=require('fs');
+const path = require('path');
+
+// If no extension is provided, return all files. Otherwise, return files with the given extension.
+function ListOfFiles(dir,extension){
+    const files = fs.readdirSync(dir);
+    const extensionMap = new Map();
+    files.forEach((file)=>{
+        const ext = path.extname(file);
+        if(!extensionMap.has(ext)){
+            extensionMap.set(ext,[]);
+        }
+        extensionMap.get(ext).push(file);
+    })
+    if(extension===undefined){
+        return files;
+    }
+    else if(!extensionMap.has(`.${extension}`)){
+        return [];
+    }
+    return extensionMap.get(`.${extension}`);
+}
+
+const dir = process.argv[2];
+const ext = process.argv[3];
+const res = ListOfFiles(dir,ext);
+res.forEach(file => console.log(file));

@@ -19,3 +19,40 @@
  */
 
 // your code here
+const http = require("http");
+const url = require("url");
+
+const server = http.createServer((req, res) => {
+  const { url: reqUrl, method } = req;
+  const parsed = url.parse(reqUrl, true);
+  const pathname = parsed.pathname;
+  if (method === "GET") {
+    if (pathname === "/api/parsetime") {
+      const isoString = parsed.query["iso"];
+      const date = new Date(isoString);
+      const result = {
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds(),
+      };
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(result));
+    } else if (pathname === "/api/unixtime") {
+      const isoString = parsed.query["iso"];
+      const date = new Date(isoString);
+      const result = {
+        unixtime: date.getTime(),
+      };
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(result));
+    } else {
+      res.end("Unsupported endpoint");
+    }
+  } else {
+    res.end("Unsupported method");
+  }
+});
+
+server.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
