@@ -4,8 +4,8 @@
 * This function does not handle getters and setters or copy attributes.
 */
 function extend(o, p) {
-    for (let prop in p){
-        o[prop] = p[prop]
+    for (let prop in p){ //走进对象p，得到每一个属性名
+        o[prop] = p[prop] //如果是方括号，是把属性名放进来，如果是o.prop那么是找名字叫做prop的属性。
     }
     return o;
 }
@@ -15,7 +15,7 @@ function extend(o, p) {
 * If o and p have properties by the same name, the values from o are used.
 */
 function union(o, p) {
-    let res = {};
+    let res = {}; //这是一个新建的project，不是map
     for (let prop in p){
         res[prop] = p[prop]
     }
