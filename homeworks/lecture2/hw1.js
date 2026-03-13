@@ -31,7 +31,7 @@ function union(o, p) {
 */
 function restrict(o, p) {
     for (let prop in o){
-        if (!(prop in p){
+        if (!(prop in p)）{
             delete o[prop];
         }
     }
