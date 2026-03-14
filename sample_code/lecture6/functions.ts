@@ -40,7 +40,7 @@ function firstElement(arr: any[]): any {
   return arr[0];
 }
 
-// function firstElement<Type>(arr: Type[]): Type | undefined {
+// function firstElement<T>(arr: T[]): T { 这里要注意
 //   return arr[0];
 // }
 
