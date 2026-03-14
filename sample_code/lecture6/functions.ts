@@ -15,6 +15,7 @@ interface Person {
 
 class PersonImpl implements Person {
   name: string;
+  //这里不能缺啥sayHello
 
   constructor(name: string) {
     this.name = name;
@@ -25,7 +26,7 @@ class PersonImpl implements Person {
   };
 }
 
-type PersonConstructor = new (name: string) => Person;
+type PersonConstructor = new (name: string) => Person;// new 一定要返回一个类型，不可以返回void
 
 function createPerson(ctor: PersonConstructor, name: string) {
   return new ctor(name);
