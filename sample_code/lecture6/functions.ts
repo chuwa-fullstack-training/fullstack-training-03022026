@@ -47,7 +47,7 @@ function firstElement(arr: any[]): any {
 let s = firstElement(['a', 'b', 'c']);
 console.log(s);
 
-// Generic inference
+// Generic inference 这里要注意
 function map<Input, Output>(
   arr: Input[],
   func: (arg: Input) => Output
