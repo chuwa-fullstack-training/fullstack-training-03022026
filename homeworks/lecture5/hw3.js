@@ -10,6 +10,15 @@ new Promise((resolve, reject) => {
   reject('f');
 }).then(result => console.log(result));
 
+// a
+// c
+// e
+// d
+// b
+// Synchronous code runs first, so a, c, and e, are printed immediately
+// the .then() callback is microtask, so d runs before the setTimeout callback b
+
+
 // 2
 const fn = () =>
   new Promise((resolve, reject) => {
@@ -22,3 +31,10 @@ fn().then(res => {
 });
 
 console.log('start');
+
+// 1
+// start
+// success
+// The promise executor runs synchronously, so 1 is printed immediately
+// The .then() callback is a microtask, so it runs after synchronous code
+// so start is printed before success
