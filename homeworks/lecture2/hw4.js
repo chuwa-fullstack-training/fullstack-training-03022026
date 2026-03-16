@@ -16,7 +16,7 @@ function f() {
   }
   console.log(a);
 }
-undifined var is hoisted as undefined first // 5 注意：true 是一个 布尔字面量,强制让 if 块内部的代码百分之百执行
+// 5 注意：true 是一个 布尔字面量,强制让 if 块内部的代码百分之百执行
 // 3. When executed, what value will be output?
 function f() {
   a = 3;
