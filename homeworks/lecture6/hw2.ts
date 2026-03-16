@@ -28,7 +28,7 @@ const persons: Person[] = [
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
+  if ("role" in person) {
     additionalInformation = person.role;
   } else {
     additionalInformation = person.occupation;
@@ -37,3 +37,7 @@ function logPerson(person: Person) {
 }
 
 persons.forEach(logPerson);
+
+// Person is a union type of User | Admin
+// Use "role" in person to narrow the type
+// If role exists, person is an Admin; otherwise, it is a User.
