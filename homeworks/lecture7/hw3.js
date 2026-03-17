@@ -19,7 +19,8 @@ const server = http.createServer((req, res) => {
   // 使用 url.parse 解析路径和查询参数
   const parsedUrl = url.parse(req.url, true);//req.url 包含请求的完整路径（例如 /home.html?name=John）
                                             //true 会告诉 Node.js 将查询字符串（Query String）解析为一个对象
-  const { pathname, query } = parsedUrl;
+  const { pathname, query } = parsedUrl; 
+  //解构赋值：const { pathname, query } = parsedUrl; 快速获取路径名（/home.html）和参数对象（{ name: 'John' }）
   const method = req.method;
 
   if (method === 'GET') {
@@ -37,12 +38,12 @@ const server = http.createServer((req, res) => {
           res.write(html); // 先写原始 HTML 内容
           
           // 如果 URL 里有数据（比如 ?name=John&age=20）
-          if (query.name || query.age) {
+          if (query.name || query.age) { //检查 URL 里的参数。如果存在，就继续往浏览器发送额外的 HTML 标签。
             res.write(`<hr><h3>Submitted Data:</h3>`);
             res.write(`<p>Name: ${query.name}</p>`);
             res.write(`<p>Age: ${query.age}</p>`);
           }
-          res.end();
+          res.end();//结束响应
         }
       });
     } else {
@@ -52,18 +53,19 @@ const server = http.createServer((req, res) => {
   } else if (method === 'POST') {
     if (pathname === '/create-post') {
       let body = [];
-      req.on('data', chunk => {
+      req.on('data', chunk => {//req.on('data') 监听每一块数据的到达
         body.push(chunk);
       });
-      req.on('end', () => {
+      req.on('end', () => {//req.on('end') 表示数据接收完毕
         // 拿到提交的原始数据，例如 "name=John&age=20"
         const parsedBody = Buffer.concat(body).toString();
         
         // --- 修改点：Hint 1 & 2 (重定向) ---
         // 1. 设置状态码为 302 (重定向)
-        res.statusCode = 302;
+        res.statusCode = 302;  //这是一种告诉浏览器“请去另一个地址”的信号。
         // 2. 设置 Location 头部，把数据拼接到 url 后面
         res.setHeader('Location', '/home.html?' + parsedBody);
+        //Location 响应头：指定浏览器应该去哪里。这里我们将原始数据（如 name=John&age=20）直接拼接到 URL 后面。
         res.end(); 
       });
     } else {
