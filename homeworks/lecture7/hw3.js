@@ -14,9 +14,11 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url'); // 必须引入 url 模块来解析参数
 
+//创建一个 Web 服务器。每当有请求进来，这个回调函数就会执行
 const server = http.createServer((req, res) => {
   // 使用 url.parse 解析路径和查询参数
-  const parsedUrl = url.parse(req.url, true);
+  const parsedUrl = url.parse(req.url, true);//req.url 包含请求的完整路径（例如 /home.html?name=John）
+                                            //true 会告诉 Node.js 将查询字符串（Query String）解析为一个对象
   const { pathname, query } = parsedUrl;
   const method = req.method;
 
