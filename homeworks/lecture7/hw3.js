@@ -20,9 +20,9 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);//req.url 包含请求的完整路径（例如 /home.html?name=John）
                                             //true 会告诉 Node.js 将查询字符串（Query String）解析为一个对象
   const { pathname, query } = parsedUrl; 
-  //解构赋值：const { pathname, query } = parsedUrl; 快速获取路径名（/home.html）和参数对象（{ name: 'John' }）
+  //解构赋值; 快速获取路径名（/home.html）和参数对象（{ name: 'John' }）
   const method = req.method;
-
+  //GET负责读取HTML文件并把数据显示出来
   if (method === 'GET') {
     if (pathname === '/') {
       res.end('this is the home page');
@@ -43,13 +43,13 @@ const server = http.createServer((req, res) => {
             res.write(`<p>Name: ${query.name}</p>`);
             res.write(`<p>Age: ${query.age}</p>`);
           }
-          res.end();//结束响应
+          res.end();//结束响应，浏览器渲染出一个带有名字和年龄的完整网页。
         }
       });
     } else {
-      res.end('this is the 404 page');
+      res.end('this is the 404 page');//当pathname不符合'/' and'/about'and'home.html'时，说明访问不存在的页面。
     }
-
+  //POST 负责接收和处理数据
   } else if (method === 'POST') {
     if (pathname === '/create-post') {
       let body = [];
@@ -63,6 +63,8 @@ const server = http.createServer((req, res) => {
         // --- 修改点：Hint 1 & 2 (重定向) ---
         // 1. 设置状态码为 302 (重定向)
         res.statusCode = 302;  //这是一种告诉浏览器“请去另一个地址”的信号。
+        //如果不进行重新定向的话，地址栏会停留在http://localhost:3000/create-post
+        //浏览器会显示一片空白，上面只有一行你提交的原始字符串
         // 2. 设置 Location 头部，把数据拼接到 url 后面
         res.setHeader('Location', '/home.html?' + parsedBody);
         //Location 响应头：指定浏览器应该去哪里。这里我们将原始数据（如 name=John&age=20）直接拼接到 URL 后面。
