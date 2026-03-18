@@ -8,6 +8,8 @@ function f() {
   }
   console.log(a);
 }
+// 7
+//answer: 7
 
 // 2. When executed, what value will be output?
 function f() {
@@ -16,6 +18,8 @@ function f() {
   }
   console.log(a);
 }
+// 5
+//answer: 5
 
 // 3. When executed, what value will be output?
 function f() {
@@ -23,6 +27,8 @@ function f() {
 }
 f();
 console.log(a);
+// 3
+//answer: 3
 
 // 4.
 var a = 5;
@@ -35,6 +41,8 @@ function second() {
 }
 first();
 second();
+// 6
+//answer: 6
 
 // 5.
 var a = 5;
@@ -42,6 +50,8 @@ function f() {
   var a = 7;
   console.log(a);
 }
+// 7
+//answer: 7
 
 // 6.
 var a = 1;
@@ -52,3 +62,6 @@ function b() {
 }
 b();
 console.log(a);
+// 10
+//answer: 1
+//JavaScript hoists declarations during the creation phase of execution, so variables and functions are processed before the code runs.
