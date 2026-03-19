@@ -24,7 +24,6 @@ for (let i = 0; i < 5; i++) {
 //2
 //3
 //4
-//5
 // let is block scope, so each loop iteration creates a new i
 // each callback captures its own copy of i
 
