@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Home Page
+  body
+    h1 Submit Your Data
+    form(action="/hw3/create-post", method="POST")
+      label Name: 
+      input(type="text", name="name")
+      br
+      label Age: 
+      input(type="number", name="age")
+      br
+      button(type="submit") Submit
+
+    if name || age
+      hr
+      h3 Submitted Data:
+      p Name: #{name}
+      p Age: #{age}
