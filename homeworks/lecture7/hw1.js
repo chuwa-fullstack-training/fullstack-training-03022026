@@ -14,3 +14,24 @@
  */
 
 // your code here
+import fs from "fs";
+import path from "path";
+
+const dir = process.argv[2];
+const ext = "." + process.argv[3];
+
+fs.readdir(dir, (err, files) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    // console.log(files);
+    // console.log(files[0], path.extname(files[0]));
+    for (const file of files) {
+        if (path.extname(file) === ext) {
+            console.log(file);
+        }
+    }
+})
+

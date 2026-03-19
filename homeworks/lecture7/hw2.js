@@ -19,3 +19,45 @@
  */
 
 // your code here
+import http from "http";
+import url from "url";
+
+const port = process.argv[2];
+const server = http.createServer((request, response) => {
+    const parsedUrl = url.parse(request.url, true);
+    const iso = parsedUrl.query.iso;
+    const date = new Date(iso);
+    // End with Z, so use UTC
+    const hour = date.getUTCHours();
+    const minute = date.getUTCMinutes();
+    const second = date.getUTCSeconds();
+
+    if (parsedUrl.pathname === "/api/parsetime"){
+        const result = {
+            hour: hour,
+            minute: minute,
+            second: second
+        };
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify(result));
+        
+    }
+    // timestamp so use getTime()
+    if (parsedUrl.pathname === "/api/unixtime"){
+        const result = {
+            unixtime: date.getTime()
+        };
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify(result));
+
+    }
+
+
+
+    // console.log(parsedUrl.pathname);
+    // console.log(parsedUrl.query);
+    // console.log(parsedUrl.query.iso);
+    // console.log(date);
+});
+
+server.listen(port);
