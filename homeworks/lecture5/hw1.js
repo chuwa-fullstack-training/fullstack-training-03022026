@@ -64,4 +64,4 @@ setTimeout(() => console.log(obj), 1000);
 obj.name = 'another obj';
 //'another obj'
 // the callback reads obj when it executes
-// since the oject is mutated before the timeout runs, the updated object is printed
+// since the object is mutated before the timeout runs, the updated object is printed
