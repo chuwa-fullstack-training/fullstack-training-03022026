@@ -22,3 +22,16 @@ const cloneDeepWithLoop = (obj, map = new WeakMap()) => {
     }
     return clone;
 }
+
+const data = {
+    name: 'foo',
+    child: null
+}
+data.child = data;
+
+const copy = cloneDeepWithLoop(data);
+console.log(copy);
+console.log(copy.name);
+console.log(copy.child);
+console.log(copy.child === data); //false
+console.log(copy.child === copy); //true
