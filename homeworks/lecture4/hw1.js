@@ -42,3 +42,4 @@ function checkValidHTML(html) {
 console.log(checkValidHTML('<html><head><title>My Title</title></head></html>'));
 console.log(checkValidHTML('<html><head><title>My Title</title></head></head></html>'));
 console.log(checkValidHTML('<html><head><title>My Title</title></head></html'));
+

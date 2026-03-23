@@ -12,4 +12,4 @@ function restFn(x, y, ...rest) {
   return x + y + rest;
 }
 
-console.log(restFn(1, 2, 3, 4, 5)); // ??
+console.log(restFn(1, 2, 3, 4, 5)); // ?? "33, 4, 5"
