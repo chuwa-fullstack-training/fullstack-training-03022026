@@ -1,5 +1,7 @@
 // change http request into promise-based function
 
+const { rejects } = require('assert');
+const { resolve } = require('dns');
 const https = require('https');
 
 // function httpsRequest(url) {
