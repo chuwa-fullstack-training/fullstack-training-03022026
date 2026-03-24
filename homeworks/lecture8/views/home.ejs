@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+  </head>
+  <body>
+    <form action="/create-post" method="POST">
+      <label>Name:</label>
+      <input type="text" name="name" />
+
+      <label>Age:</label>
+      <input type="text" name="age" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="result">
+      <p>Name: <%= name %></p>
+      <p>Age: <%= age %></p>
+    </div>
+  </body>
+</html>
