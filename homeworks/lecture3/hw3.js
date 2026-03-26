@@ -1,5 +1,12 @@
+// count 要记住一个累加的总和，每次调用加上去
 function counter() {
-    // implement here
+    let sum = 0;
+    return function(nums){
+        if (nums != undefined){
+            sum += nums;
+        }
+        return sum;
+    };
 }
 
 let count = counter();

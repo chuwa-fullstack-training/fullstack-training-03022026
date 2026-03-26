@@ -18,7 +18,29 @@
  * 1 <= nums[i] <= 100
  */
 function numIdenticalPairs(nums) {
-  // implement here
+  // implement here: 2解法：2个for loop 或者是 用hashmap 记count
+  let count = 0;
+  for (let i= 0; i < nums.length; i++){
+    for (let j = i+1; j <nums.length; j++){
+      if (nums[i] === nums[j]) {
+        count += 1;
+      }
+    }
+  }
+  return count;
+
+  // soultion 2:hashmap
+  let c = 0;
+  let map = {};
+  for (let i = 0; i <nums.length; i ++){
+    if (map[nums[i]]){
+      c += map[nums[i]];
+    }
+    map[nums[i]] = (map[nums[i] || 0]) +1;
+  }
+  return c;
+
+
 }
 
 /**
@@ -26,4 +48,14 @@ function numIdenticalPairs(nums) {
  */
 function removeVowels(s) {
   // implement here
+  let res = '';
+  let vowels = 'aeiou'
+  for (let i = 0; i <s.length; i++){
+    if (!vowels.includes(s[i])){ // vowels.includes() 返回的是布尔值true/false. ! 是取反的意思
+      res += s[i];
+    } 
+  }
+  return res;
 }
+console.log(removeVowels('leetcode'));    // 'ltcd'
+console.log(removeVowels('hello')); 

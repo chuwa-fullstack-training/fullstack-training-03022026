@@ -37,9 +37,34 @@ const https = require('https');
 //   });
 // }
 
+// 改的方法 console.log(result) → resolve(result) 和 console.error / throw → reject(error)
+
 function getJSON(url) {
   // implement your code here
+  return new Promise((resolve, reject)=>{
+    const options = {headers:{'User-Agent':'request'}};
+    const request = https.get(url, options, response =>{
+      if (response.statusCode !== 200){
+        reject(`Did not get an OK from the server. Code ${response.statusCode}`);
+          response.resume();
+          return;
+        }
+          let data = '';
+          response.on('data', chunk =>{
+            data += chunk;
+      });
+      response.on('end', () => {
+        try {
+          resolve(JSON.parse(data));
+          } catch (e) {
+            reject(e.message);
+          }
+  });
+});
+    request.on('error', err => {reject(err.message);});
+  });
 }
+
 
 getJSON('https://api.github.com/search/repositories?q=javascript')
   .then(response => console.log(response.items.length)) // output: 30
