@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     try {
         const employee = new Employee(req.body);
         await employee.save();
-
+        // add the employee in company
         await Company.findByIdAndUpdate(
         employee.company,
         { $push: { _employees: employee._id } }
