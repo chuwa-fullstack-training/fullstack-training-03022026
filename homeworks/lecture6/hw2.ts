@@ -10,6 +10,9 @@ interface Admin {
   role: string;
 }
 
+// union type 需要区分是哪个类型时，
+// 用 "属性名" in 对象 来做类型收窄，TypeScript 就能在 if/else 的分支里自动识别具体类型。
+// union type 报错 → 需要类型收窄 → interface 用 in，class 用 instanceof，基本类型用 typeof。
 type Person = User | Admin;
 
 const persons: Person[] = [
@@ -28,7 +31,7 @@ const persons: Person[] = [
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
+  if ('role' in person) {
     additionalInformation = person.role;
   } else {
     additionalInformation = person.occupation;
