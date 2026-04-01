@@ -4,7 +4,7 @@
 * This function does not handle getters and setters or copy attributes.
 */
 function extend(o, p) {
-    for (let prop in p){ //走进对象p，得到每一个属性名
+    for (let prop in p) { //走进对象p，得到每一个属性名
         o[prop] = p[prop] //如果是方括号，是把属性名放进来，如果是o.prop那么是找名字叫做prop的属性。
     }
     return o;
@@ -16,10 +16,10 @@ function extend(o, p) {
 */
 function union(o, p) {
     let res = {}; //这是一个新建的object，不是map
-    for (let prop in p){
+    for (let prop in p) {
         res[prop] = p[prop]
     }
-    for(let prop in o){
+    for (let prop in o) {
         res[prop] = o[prop]
     }
     return res;
@@ -30,12 +30,12 @@ function union(o, p) {
 * Return o.
 */
 function restrict(o, p) {
-    for (let prop in o){
-        if (!(prop in p)）{
+    for (let prop in o) {
+        if (!(prop in p)) {
             delete o[prop];
         }
     }
-   return o;
+    return o;
 }
 
 /*
@@ -45,8 +45,8 @@ function restrict(o, p) {
 */
 function intersection(o, p) {
     let res2 = {};
-    for (let prop in o){
-        if(prop in p){
+    for (let prop in o) {
+        if (prop in p) {
             res2[prop] = o[prop]
         }
     }
