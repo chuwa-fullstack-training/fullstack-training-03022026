@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // 当已经有view/ejs了。
 app.set('view', path.join(__dirname, 'views'));
 
 app.use(espress.uselencoded({extended: true}));
